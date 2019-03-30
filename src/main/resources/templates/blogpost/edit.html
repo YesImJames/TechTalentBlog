@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blog Edit</title>
+    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div>
+	<a href="/new">
+		<button type="button" class="btn btn-primary">Add Blog Post</button>
+	</a>
+	<!--  Figure out how to make the code let us choose the id -->
+	<div th:each="blog:${id}">
+	<a th:href="@{'/delete/{id}' (id=${blog.id})}">
+		<button type="button" class="btn btn-danger" th:text="${blog.id}"></button>
+	
+	</a>
+	</div>
+	
+</div>
+
+</body>
+</html>

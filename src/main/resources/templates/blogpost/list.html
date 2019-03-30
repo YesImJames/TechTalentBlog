@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/style :: style (pageTitle='Blag Home')" />
+
+<body>	
+	<div th:replace="fragments/navbar :: navbar" ></div>
+
+
+<div class="row">
+    <div th:each="blog:${posts}">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p th:text="${blog.title}"/>
+                    <p th:text="${blog.author}"/>
+                </div>
+                
+                <div class="panel-body">
+                    <p th:text="${blog.blogEntry}" />
+                </div>
+	                <div class="panel-footer">
+	                <!-- Split button -->
+						<div class="btn-group">
+						  <button type="button" class="btn btn-info">Action</button>
+						  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    <span class="caret"></span>
+						    <span class="sr-only">Toggle Dropdown</span>
+						  </button>
+						  <ul class="dropdown-menu">
+						    <li><a th:href="@{'/edit/{id}'(id=${blog.id})}">
+							<button type="button" class="btn btn-primary">Edit this post</button>
+						</a></li>
+						    <li role="separator" class="divider"></li>
+						    <li> 
+						    	<form action="#" th:action="@{'/delete/{id}'(id=${blog.id})}" th:method="delete" class="form-horizontal">
+                        			<input type="hidden" name="_method" value="delete"/>
+                        			<button type="submit" class="btn btn-danger" onclick="if (!confirm('Are you sure?')) { return false }" th:text="Delete">Delete</button>
+                        					
+                        		</form>
+                        	</li>
+						  </ul>
+						</div>
+	                	
+						
+
+					</div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html>

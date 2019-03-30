@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/style :: style (pageTitle='Hey yo Thanks')" />
+<body>
+<div th:replace="fragments/navbar :: navbar" ></div>
+<div class="container">
+	Thanks for you submission!
+	<h4> Blog Post</h4>
+	<p th:text="${title}"> </p>
+	<p th:text="${author}"> </p>
+	<p th:text="${blogEntry}"> </p>
+</div>
+	
+</body>
+</html>
